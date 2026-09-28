@@ -188,7 +188,7 @@
       <div class="brand-name">Grafismo Fonético<span>ÁREA DE MEMBROS</span></div>
     </div>
     <div class="progress-card">
-      <div class="lbl"><span>O teu progresso</span><span id="progPct">0%</span></div>
+      <div class="lbl"><span>O seu progresso</span><span id="progPct">0%</span></div>
       <div class="bar"><i id="progBar"></i></div>
     </div>
     <nav id="nav"></nav>
@@ -349,8 +349,8 @@ function renderInicio(){
     </button>`; }).join("");
   view.innerHTML = `
     <div class="welcome">
-      <h2>Bem-vindo(a) à tua área de membros! 🎉</h2>
-      <p>Aqui tens o Kit de Grafismo Fonético completo, como um livro. Basta 10 minutos por dia — carrega em continuar e começa por onde ficaste.</p>
+      <h2>Bem-vindo(a) à sua área de membros! 🎉</h2>
+      <p>Aqui tem o Kit de Grafismo Fonético completo, como um livro. Basta 10 minutos por dia — carregue em continuar e comece por onde ficou.</p>
       <button class="btn btn-white" onclick="go('${firstUndone.id}')">▶ Continuar: ${firstUndone.nav}</button>
     </div>
     <div class="section-title">O programa <span class="tag tag-bonus" style="background:rgba(76,175,80,.14);color:#2e7d32;border:1px solid rgba(76,175,80,.4)">+130 atividades</span></div>
@@ -459,11 +459,11 @@ function renderGuia(){
   view.innerHTML = `<div class="prose">
     <p class="intro-line">Em 3 passos simples, começas hoje mesmo — sem seres professor.</p>
     <div class="cards" style="grid-template-columns:1fr">
-      ${step("1","Escolhe o nível","Começa no Nível 1 e sobe à medida que a criança ganha confiança. Cada nível tem fichas prontas a usar.")}
-      ${step("2","10 minutos por dia","Faz uma ficha por dia. Lê o som, aponta para o símbolo e deixa a criança traçar por cima do tracejado.")}
-      ${step("3","Marca e celebra","Marca cada módulo como concluído, acompanha o progresso e, no fim, gera o Diploma de Pequeno Leitor.")}
+      ${step("1","Escolha o nível","Comece no Nível 1 e suba à medida que a criança ganha confiança. Cada nível tem fichas prontas a usar.")}
+      ${step("2","10 minutos por dia","Faça uma ficha por dia. Leia o som, aponte para o símbolo e deixe a criança traçar por cima do tracejado.")}
+      ${step("3","Marque e celebre","Marque cada módulo como concluído, acompanhe o progresso e, no fim, gere o Diploma de Pequeno Leitor.")}
     </div>
-    <div class="callout" style="margin-top:20px">💡 <b>Dica:</b> usa os <b>Cartões de Sons</b> (nos extras) antes de cada ficha para a criança ouvir o som de cada letra em português de Portugal.</div>
+    <div class="callout" style="margin-top:20px">💡 <b>Dica:</b> use os <b>Cartões de Sons</b> (nos extras) antes de cada ficha para a criança ouvir o som de cada letra em português de Portugal.</div>
     <div style="margin-top:22px"><button class="btn btn-primary" onclick="go('n1')">Começar no Nível 1 →</button></div>
   </div>`;
 }
@@ -471,7 +471,7 @@ function step(n,t,d){ return `<div class="mcard" style="display:flex;gap:16px;al
 
 /* ---------- Bónus lista ---------- */
 function renderBonusList(){
-  view.innerHTML = `<p class="intro-line">6 cadernos extra incluídos no teu acesso — todos prontos a usar. Carrega para abrir.</p>
+  view.innerHTML = `<p class="intro-line">6 cadernos extra incluídos no seu acesso — todos prontos a usar. Carregue para abrir.</p>
     <div class="cards">${bonusBooks.map(b=>`
       <button class="mcard" onclick="go('${b.id}')"><span class="tag tag-bonus" style="position:absolute;top:14px;right:14px">Bónus</span>
         <div class="thumb" style="background:${b.thumbBg}">${b.icon}</div><h4>${b.title}</h4>
@@ -491,9 +491,9 @@ function pickPtVoice(){
 function renderSons(){
   const info = pickPtVoice();
   const banner = info.hasPtPt
-    ? `<div class="callout" style="margin-bottom:16px;background:var(--green);border-color:#cceccf">✅ Voz de <b>português de Portugal</b> detetada neste dispositivo${ptVoice&&ptVoice.name?` (${ptVoice.name})`:''}. Clica numa letra para ouvir.</div>`
+    ? `<div class="callout" style="margin-bottom:16px;background:var(--green);border-color:#cceccf">✅ Voz de <b>português de Portugal</b> detetada neste dispositivo${ptVoice&&ptVoice.name?` (${ptVoice.name})`:''}. Clique numa letra para ouvir.</div>`
     : `<div class="callout" style="margin-bottom:16px">🔊 Este dispositivo ${info.anyPt?'tem voz portuguesa, mas pode ser do Brasil':'não tem voz portuguesa instalada'} — o sotaque pode não ser o de Portugal. Para a pronúncia perfeita, a versão final inclui <b>áudios gravados por locutor português</b>.</div>`;
-  view.innerHTML = `<p class="intro-line">Clica em cada letra para ouvir o som e um exemplo em português de Portugal. As <b style="color:var(--secondary)">vogais</b> estão destacadas.</p>
+  view.innerHTML = `<p class="intro-line">Clique em cada letra para ouvir o som e um exemplo em português de Portugal. As <b style="color:var(--secondary)">vogais</b> estão destacadas.</p>
     ${banner}
     <div class="letters">${ALFA.map(([l,w])=>`<button class="letter ${'AEIOU'.includes(l)?'vowel':''}" data-l="${l}" data-w="${w}" title="${l} de ${w.toLowerCase()}">${l}</button>`).join("")}</div>`;
   view.querySelectorAll(".letter").forEach(b => b.addEventListener("click", ()=> speak(b)));
@@ -512,13 +512,13 @@ function speak(btn){
     u.onend = ()=> btn.classList.remove("speaking");
     setTimeout(()=>btn.classList.remove("speaking"), 1600);
     speechSynthesis.speak(u);
-  } catch(e){ toast("O teu navegador não suporta leitura de voz."); }
+  } catch(e){ toast("O seu navegador não suporta leitura de voz."); }
 }
 
 /* ---------- Plano 10 min ---------- */
 function renderPlano(){
   const dias = [["Segunda","Nível 1 · ficha PATO"],["Terça","Nível 1 · ficha BOLA"],["Quarta","Cartões de Sons — vogais"],["Quinta","Nível 2 · ficha BANANA"],["Sexta","Nível 2 · ficha CAVALO"],["Sábado","Rever + jogo dos sons"],["Domingo","Descanso ou leitura livre 📖"]];
-  view.innerHTML = `<p class="intro-line">Um plano leve para a semana. Marca cada dia — cada dia conta para a tua sequência 🔥.</p>
+  view.innerHTML = `<p class="intro-line">Um plano leve para a semana. Marque cada dia — cada dia conta para a sua sequência 🔥.</p>
     <div class="plan">${dias.map((d,i)=>`
       <div class="day ${state.plan[i]?'on':''}" data-i="${i}">
         <span class="dname">${d[0]}</span><span class="dtask">${d[1]}</span>
@@ -531,7 +531,7 @@ function renderPlano(){
 
 /* ---------- Diploma ---------- */
 function renderDiploma(){
-  view.innerHTML = `<p class="intro-line">Escreve o nome da criança e vê o diploma. Na versão final, é descarregado em PDF para imprimir e emoldurar.</p>
+  view.innerHTML = `<p class="intro-line">Escreva o nome da criança e veja o diploma. Na versão final, é descarregado em PDF para imprimir e emoldurar.</p>
     <div class="field"><input id="childName" type="text" placeholder="Nome da criança" value="${state.name||''}" maxlength="28"><button class="btn btn-primary" id="genDip">Gerar</button></div>
     <div id="dipWrap"></div>`;
   const draw = ()=>{
@@ -554,13 +554,13 @@ function renderDiploma(){
 /* ---------- Apoio profissional ---------- */
 function renderApoio(){
   view.innerHTML = `<div class="prose">
-    <p class="intro-line">Nunca ficas sozinho(a). A nossa equipa acompanha-te em cada passo.</p>
+    <p class="intro-line">Nunca fica sozinho(a). A nossa equipa está consigo em cada passo.</p>
     <div class="cards" style="grid-template-columns:1fr 1fr">
-      <div class="mcard"><div class="thumb" style="background:#EFFBF1">💬</div><h4>Apoio humano e próximo</h4><div class="meta" style="font-size:14px">Tira dúvidas sobre como aplicar as fichas e adaptar ao ritmo da criança.</div></div>
+      <div class="mcard"><div class="thumb" style="background:#EFFBF1">💬</div><h4>Apoio humano e próximo</h4><div class="meta" style="font-size:14px">Esclareça dúvidas sobre como aplicar as fichas e adaptar ao ritmo da criança.</div></div>
       <div class="mcard"><div class="thumb" style="background:#EAF2FC">⚡</div><h4>Resposta rápida</h4><div class="meta" style="font-size:14px">Escrevemos de volta, normalmente, no mesmo dia útil.</div></div>
     </div>
-    <div class="callout" style="margin-top:18px">✉️ <b>Fala connosco:</b> <span style="user-select:all">apoio@educacaokids.pt</span>
-      <div style="margin-top:8px;color:var(--muted);font-size:13px">Substitui por o teu e-mail de apoio real antes de publicares.</div>
+    <div class="callout" style="margin-top:18px">✉️ <b>Fale connosco:</b> <span style="user-select:all">apoio@educacaokids.pt</span>
+      <div style="margin-top:8px;color:var(--muted);font-size:13px">Substitua pelo seu e-mail de apoio real antes de publicar.</div>
     </div>
   </div>`;
 }
@@ -572,9 +572,9 @@ function renderPais(){
     <h3>Porque é que 10 minutos chegam?</h3>
     <p>A consistência vale mais do que a duração. Sessões curtas e diárias fixam melhor os sons e as letras do que sessões longas e espaçadas — e mantêm a criança motivada.</p>
     <h3>Como conduzir cada ficha</h3>
-    <p>1. Diz o som da letra (não o nome). 2. Aponta para o símbolo/grafismo. 3. Deixa a criança traçar por cima do tracejado. 4. Leiam juntos a palavra e celebrem.</p>
+    <p>1. Diga o som da letra (não o nome). 2. Aponte para o símbolo/grafismo. 3. Deixe a criança traçar por cima do tracejado. 4. Leiam juntos a palavra e celebrem.</p>
     <h3>O que evitar</h3>
-    <p>Evita corrigir em excesso ou comparar com outras crianças. Se houver frustração, para e retoma no dia seguinte. O ritmo é da criança.</p>
+    <p>Evite corrigir em excesso ou comparar com outras crianças. Se houver frustração, pare e retome no dia seguinte. O ritmo é da criança.</p>
     <div class="callout" style="margin-top:18px">👀 <b>Sinais de progresso:</b> reconhecer sons mais depressa, tentar ler palavras novas e pedir para fazer a ficha. São ótimos indicadores!</div>
   </div>`;
 }
